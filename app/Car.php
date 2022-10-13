@@ -2,22 +2,24 @@
 
 declare(strict_types=1);
 
+use App\Driver;
+
 class Car
 {
+    public ?Driver $driver = null;
+
    private ?int $odometer;
    private string $number_plate;
 
-   private float $fuelConsumption;
 
     public function __construct(
        int $odometrs,
        string $number_plate,
-       float $fuelCosumption
-   )
-   {
+       private float $fuelCosumption
+    )
+    {
        $this->odometer = $odometrs;
        $this->number_plate = $number_plate;
-       $this->fuelConsumption = $fuelCosumption;
    }
 
    public function addKilometers(int $kilometer): Car
@@ -33,7 +35,7 @@ class Car
      */
     public function getFuelConsumption(): float
     {
-        return $this->odometer * $this->fuelConsumption / 100;
+        return $this->odometer * $this->fuelCosumption / 100;
     }
     public function __destruct()
     {
