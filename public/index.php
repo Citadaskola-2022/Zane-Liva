@@ -2,19 +2,15 @@
 
 declare(strict_types=1);
 
-require_once '../src/Car.php';
+spl_autoload_register(function ($class) {
+    $class = __DIR__ .'/../'. lcfirst(str_replace('\\', '/', $class)) . '.php';
+    require_once $class;
+    var_dump($class);
 
-$car1Liters = (new Car(1000, 'ab-1234', 14.6))
-->addKilometers(500)
-->addKilometers(200)
-->addKilometers(100)
-->getFuelConsumption();
+});
 
+$subBill = new \App\Invoices\Sub\Bill();
 
-
-//$car->odometer = 256000;
-
-var_dump($car1Liters);
-
+var_dump($subBill);
 
 //require __DIR__ . '/../bootstrap/app.php';
