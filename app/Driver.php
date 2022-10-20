@@ -2,7 +2,7 @@
 
 namespace App;
 
-class Bill
+class Driver
 {
 
 }
