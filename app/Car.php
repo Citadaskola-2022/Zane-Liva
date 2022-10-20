@@ -15,7 +15,7 @@ class Car
     public function __construct(
        int $odometrs,
        string $number_plate,
-       private float $fuelCosumption
+       private float $fuelCosumption,
     )
     {
        $this->odometer = $odometrs;
