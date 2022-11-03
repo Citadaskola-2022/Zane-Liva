@@ -2,26 +2,20 @@
 
 declare(strict_types=1);
 
-use App\Phone;
+use App\ServiceCost;
 
 spl_autoload_register(function ($class) {
-    $class = __DIR__ .'/../'. lcfirst(str_replace('\\', '/', $class)) . '.php';
+    $class = __DIR__ . '/../' . lcfirst(str_replace('\\', '/', $class)) . '.php';
     require_once $class;
     var_dump($class);
 
 });
 
+$transaction = new ServiceCost(50);
 
-$iphone = new Phone(11, 'Apple', 144, 71.4);
-$android = new Phone(22, 'Samsung');
+//$transaction->amount = 200;
 
+var_dump($transaction->getAmount());
 
-$iphone->installApp('Facebook');
-$iphone->installApp('Instagram');
-$iphone->installApp('Duolingo');
+$transaction->process();
 
-echo implode( '',$iphone->getInstalledApps());
-
-$iphone->turnOnSetting("DND");
-
-//require __DIR__ . '/../bootstrap/app.php';
