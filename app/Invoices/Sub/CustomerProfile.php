@@ -1,6 +1,6 @@
 <?php
 
-namespace App\invoices\Sub;
+namespace App\Invoices\Sub;
 class CustomerProfile
 {
 
