@@ -2,15 +2,39 @@
 
 declare(strict_types=1);
 
-spl_autoload_register(function ($class) {
-    $class = __DIR__ .'/../'. lcfirst(str_replace('\\', '/', $class)) . '.php';
-    require_once $class;
-    var_dump($class);
 
-});
+use Ramsey\Uuid\Uuid;
+require __DIR__ . '/../bootstrap/app.php';
 
-$subBill = new \App\Invoices\Sub\Bill();
+$transaction = new \App\ServiceCost(111);
+//$transaction->process();
 
-var_dump($subBill);
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ .'/../');
+$dotenv->load();
 
-//require __DIR__ . '/../bootstrap/app.php';
+var_dump($_ENV['B_USER'] ?? '');
+var_dump($_ENV['B_PASSWORD'] ?? '');
+
+$inflector = \Doctrine\Inflector\InflectorFactory::create()->build();
+
+$name = 'apple';
+printf(
+    'vienskaitlis: %s, daudzskaitlis %s',
+    $name, $inflector->pluralize($name)
+);
+echo '<br>';
+
+$blogPost = 'This Is MY 4w350m3 Blog post';
+printf(
+    'title: %s, url: %s',
+    $blogPost, $inflector->urlize($blogPost)
+);
+
+
+$uuid = Uuid::uuid4();
+
+printf(
+    "UUID: %s\nVersion: %d\n",
+    $uuid->toString(),
+    $uuid->getFields()->getVersion()
+);
