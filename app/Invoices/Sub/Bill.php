@@ -4,14 +4,19 @@ declare(strict_types=1);
 
 namespace App\Invoices\Sub;
 
+use App\Notifications\Email;
+
 class Bill
 {
-public function __construct()
-{
-    $customerProfile = new \App\invoices\Sub\CustomerProfile();
 
-    $email = new \App\Notifications\Email();
+    public function __construct($a)
+    {
+       $customerProfile = new CustomerProfile();
 
-    var_dump($email);
-}
+       $email = new Email();
+
+       if (1 == 2) {
+       } elseif ($a == 2) {
+        }
+    }
 }
